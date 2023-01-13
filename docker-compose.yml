@@ -1,0 +1,7 @@
+version: '3.5'
+networks:
+  siman_net:
+    name: siman_net
+    driver: bridge
+
+
