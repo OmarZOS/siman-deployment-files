@@ -1,0 +1,41 @@
+version: '3.5'
+services:
+  elasticsearch-node1:
+    image: bitnami/elasticsearch
+    container_name: elasticsearch-node1
+    environment:
+      - ELASTICSEARCH_CLUSTER_NAME=elasticsearch-cluster
+      - ELASTICSEARCH_CLUSTER_HOSTS=elasticsearch-node1,elasticsearch-node2
+      - ELASTICSEARCH_NODE_NAME=elastic-node1
+    networks:
+      - elastic_net
+  elasticsearch-node2:
+    image: bitnami/elasticsearch
+    container_name: elasticsearch-node2
+    environment:
+      - ELASTICSEARCH_CLUSTER_NAME=elasticsearch-cluster
+      - ELASTICSEARCH_CLUSTER_HOSTS=elasticsearch-node1,elasticsearch-node2
+      - ELASTICSEARCH_NODE_NAME=elastic-node2
+    networks:
+    - elastic_net
+  elasticsearch:
+    image: bitnami/elasticsearch
+    container_name: elasticsearch
+    hostname: elasticsearch
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    networks:
+      - elastic_net
+      - siman_net
+    volumes:
+      - 'elasticsearch_data:/bitnami/elasticsearch/data'
+volumes:
+  elasticsearch_data:
+    driver: local
+networks:
+  siman_net:
+    external: true
+  elastic_net:
+    name: elastic_net
+    driver: bridge
