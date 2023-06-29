@@ -19,6 +19,9 @@ Execute the following command:
 
     make
 
+## Schemas:
+![Image Description](3rd_party_software/my-sql/siman.png)
+
 
 
 >   ## Note:
