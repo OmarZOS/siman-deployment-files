@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<map version="1.0.1">
+  <node TEXT="HTTP Status Codes">
+    <node TEXT="1xx Informational">
+      <node TEXT="100 Continue - Client can continue with the request"/>
+      <node TEXT="101 Switching Protocols - Server is switching protocols"/>
+      <node TEXT="102 Processing - WebDAV: server has received and is processing the request"/>
+      <node TEXT="103 Early Hints - Used to return some response headers before final HTTP message"/>
+    </node>
+    <node TEXT="2xx Success">
+      <node TEXT="200 OK - Standard response for successful HTTP requests"/>
+      <node TEXT="201 Created - Request has been fulfilled, resulting in creation of a resource"/>
+      <node TEXT="202 Accepted - Request accepted for processing, not completed"/>
+      <node TEXT="203 Non-Authoritative Information - Returned meta-information from a third party"/>
+      <node TEXT="204 No Content - No content to send, but headers may be useful"/>
+      <node TEXT="205 Reset Content - Reset the document view"/>
+      <node TEXT="206 Partial Content - Partial GET request successful"/>
+      <node TEXT="207 Multi-Status - WebDAV: Multiple status codes for multiple operations"/>
+      <node TEXT="208 Already Reported - WebDAV: Members of a DAV binding already enumerated"/>
+      <node TEXT="226 IM Used - Delta encoding used"/>
+    </node>
+    <node TEXT="3xx Redirection">
+      <node TEXT="300 Multiple Choices - Multiple options for the resource"/>
+      <node TEXT="301 Moved Permanently - This and future requests should use another URI"/>
+      <node TEXT="302 Found - Temporarily located at another URI"/>
+      <node TEXT="303 See Other - See another URI using GET"/>
+      <node TEXT="304 Not Modified - Resource not modified since last request"/>
+      <node TEXT="305 Use Proxy - Deprecated"/>
+      <node TEXT="307 Temporary Redirect - Temporary redirect preserving method"/>
+      <node TEXT="308 Permanent Redirect - Permanent redirect preserving method"/>
+    </node>
+    <node TEXT="4xx Client Error">
+      <node TEXT="400 Bad Request - Malformed request syntax"/>
+      <node TEXT="401 Unauthorized - Authentication is required"/>
+      <node TEXT="402 Payment Required - Reserved for future use"/>
+      <node TEXT="403 Forbidden - Server understood but refuses to authorize"/>
+      <node TEXT="404 Not Found - Resource could not be found"/>
+      <node TEXT="405 Method Not Allowed - Request method is not supported"/>
+      <node TEXT="406 Not Acceptable - Requested resource is not acceptable"/>
+      <node TEXT="407 Proxy Authentication Required - Authentication with proxy required"/>
+      <node TEXT="408 Request Timeout - Client did not produce request in time"/>
+      <node TEXT="409 Conflict - Request could not be completed due to conflict"/>
+      <node TEXT="410 Gone - Resource is no longer available"/>
+      <node TEXT="411 Length Required - Content-Length header is required"/>
+      <node TEXT="412 Precondition Failed - Preconditions in headers are false"/>
+      <node TEXT="413 Payload Too Large - Request entity is too large"/>
+      <node TEXT="414 URI Too Long - Request-URI is too long"/>
+      <node TEXT="415 Unsupported Media Type - Unsupported media type in request"/>
+      <node TEXT="416 Range Not Satisfiable - Client asked for unfulfillable range"/>
+      <node TEXT="417 Expectation Failed - Server cannot meet Expect request-header"/>
+      <node TEXT="418 I'm a teapot - April Fools' joke from 1998"/>
+      <node TEXT="421 Misdirected Request - Request was directed at a server not able to produce a response"/>
+      <node TEXT="422 Unprocessable Entity - Semantic errors in request"/>
+      <node TEXT="423 Locked - Resource is locked"/>
+      <node TEXT="424 Failed Dependency - Failed dependency in request"/>
+      <node TEXT="425 Too Early - Too early to process"/>
+      <node TEXT="426 Upgrade Required - Client should switch to a different protocol"/>
+      <node TEXT="428 Precondition Required - Origin server requires conditional request"/>
+      <node TEXT="429 Too Many Requests - Rate limiting"/>
+      <node TEXT="431 Request Header Fields Too Large - Headers too large"/>
+      <node TEXT="451 Unavailable For Legal Reasons - Access to resource denied due to legal reasons"/>
+    </node>
+    <node TEXT="5xx Server Error">
+      <node TEXT="500 Internal Server Error - Unexpected server condition"/>
+      <node TEXT="501 Not Implemented - Server does not support functionality"/>
+      <node TEXT="502 Bad Gateway - Invalid response from upstream server"/>
+      <node TEXT="503 Service Unavailable - Server temporarily unavailable"/>
+      <node TEXT="504 Gateway Timeout - Upstream server failed to respond in time"/>
+      <node TEXT="505 HTTP Version Not Supported - Server does not support version of HTTP"/>
+      <node TEXT="506 Variant Also Negotiates - Variant negotiation circular reference"/>
+      <node TEXT="507 Insufficient Storage - WebDAV: Insufficient storage"/>
+      <node TEXT="508 Loop Detected - WebDAV: Infinite loop detected"/>
+      <node TEXT="510 Not Extended - Further extensions required"/>
+      <node TEXT="511 Network Authentication Required - Client needs to authenticate to access network"/>
+    </node>
+  </node>
+</map>
