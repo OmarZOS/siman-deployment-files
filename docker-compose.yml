@@ -1,0 +1,77 @@
+# version: "3.8"
+services:
+
+
+  mysql:
+    image: mysql
+    container_name: siman-db
+    restart: always
+    command: --init-file /data/application/init.sql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+        - ./database.sql:/data/application/init.sql
+        - ./data/sql:/var/lib/mysql
+    networks:
+      - siman-net
+
+  siman-auth:
+    container_name: siman-auth
+    hostname: siman-auth
+    restart: unless-stopped
+    command: uvicorn server:app --host 0.0.0.0  --port 9090 --reload # 
+    image: omarzos/emastan-auth:latest
+    environment:
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+      - AUTH_PORT=9090
+      - API_SECRET_KEY=${SECRET_KEY}
+      - API_ALGORITHM=${ALGORITHM}
+      - AUTH_DATABASE_URL=sqlite:///../auth_db/auth_db_data.db
+      - DEFAULT_ADMIN_USERNAME=${DEFAULT_ADMIN_USERNAME}
+      - DEFAULT_ADMIN_PASSWORD=${DEFAULT_ADMIN_PASSWORD}
+    ports:
+    
+      - 9090:9090
+    networks:
+      - siman-net
+    # volumes:
+    #   - ./data/auth_db/:/auth_db/
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+
+  siman-fs:
+    container_name: siman-fs
+    hostname: siman-fs
+    restart: unless-stopped
+    command: uvicorn server:app --host 0.0.0.0 --port 9099 
+    image: omarzos/emagrad-fs:latest
+    ports:
+      - 9099:9099
+    environment:
+      - FS_PORT=9099
+      - FS_BASE_STORAGE=${FS_BASE_STORAGE}
+      - FS_CACHE_STORAGE=${FS_CACHE_STORAGE}
+    networks:
+      - siman-net
+    # volumes:
+    #   - ./data/fs/:/fs/
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+      
+volumes:
+  data:
+networks:
+  siman-net:
+    name: siman-net
+    driver: bridge

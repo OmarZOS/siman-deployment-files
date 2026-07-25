@@ -1,0 +1,4 @@
+doc-storage-server
+data/*
+my_db
+.env
